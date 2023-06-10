@@ -1,0 +1,10 @@
+#!/bin/bash
+# PS Move executable script
+
+if [ ! -f /etc/udev/rules.d/99-psmove.rules ]; then
+    sudo cp fix/etc/udev/rules.d/99-psmove.rules /etc/udev/rules.d/
+    echo rules copied
+    sudo udevadm trigger
+fi
+
+sudo LD_LIBRARY_PATH=fix/lib ./fix/bin/psmove pair
